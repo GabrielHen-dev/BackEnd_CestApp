@@ -43,4 +43,12 @@ const deleteUser = async (id) => {
   }
 };
 
-module.exports = { createUser, listUser, searchUserbyId, updateUser, deleteUser };
+const buscarcpf = async (cpf) => {
+  try {
+    return await users.findOne({cpf : cpf});
+  } catch (error) {
+    throw new Error('Erro ao deletar usuário: ' + error.message);
+  }
+};
+
+module.exports = { createUser, listUser, searchUserbyId, updateUser, deleteUser, buscarcpf};

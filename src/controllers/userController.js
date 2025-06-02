@@ -4,7 +4,7 @@ const createUser = async (req, res) => {
   try {
     const { nome, email, endereco, telefone, cpf, cep, cidade, bairro, genero, provedor, renda, tamanhoFam, outrosProgramas, quaisProgramas, estadoUser, funcionario } = req.body;
 
-    if (!nome || !email || !telefone  || !endereco || !cpf ||  !cep ||  !cidade ||  !bairro || !genero ||  !provedor || !renda || !tamanhoFam || !outrosProgramas || quaisProgramas|| !estadoUser || !funcionario) {
+    if (!nome || !email || !telefone  || !endereco || !cpf ||  !cep ||  !cidade ||  !bairro || !genero ||  !provedor || !renda || !tamanhoFam || !outrosProgramas || !estadoUser || !funcionario) {
       return res.status(400).json({ message: 'Todos os campos são obrigatórios.' });
     }
 
@@ -60,4 +60,21 @@ const deleteUser = async (req, res) => {
   }
 };
 
-module.exports = { createUser, listUser, updateUser, deleteUser};
+const login = async (req, res) => {
+  try {
+    const { cpf } = req.body; 
+
+    const user = await userService.buscarcpf(cpf);
+
+    if (user.cpf == cpf) {
+      return res.status(200).json({ userid: `${user._id}`, funcionario: `${user.funcionario}` });
+    }else{
+      return res.status(404).json({ message: "User não encontrado" });
+    }
+
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+module.exports = { createUser, listUser, updateUser, deleteUser, login};

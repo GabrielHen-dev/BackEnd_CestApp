@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect("Login Banco", {
+mongoose.connect("mongodb+srv://GabrielH:ghco2006@cluster0.qt5mz.mongodb.net/", {
     
   serverSelectionTimeoutMS: 5000, 
   socketTimeoutMS: 15000, 
