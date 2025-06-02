@@ -7,14 +7,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect("Conexao com o banco de dados", {
+mongoose.connect("mongodb+srv://GabrielH:ghco2006@cluster0.qt5mz.mongodb.net/", {
     
-  serverSelectionTimeoutMS: 5000, // Tempo máximo de espera para conectar ao servidor
-  socketTimeoutMS: 45000, // Tempo máximo de espera para operações
+  serverSelectionTimeoutMS: 5000, 
+  socketTimeoutMS: 15000, 
 })
 
 .then(() => console.log("Conectado ao MongoDB com sucesso!"))
-.catch((err) => console.log("Conectado ao MongoDB com sucesso!", err));
+.catch((err) => console.log("Erro ao tentar conectar ao MongoDB!", err));
 
 app.get('/health', (req, res) => {
     res.status(200).json({ status: 200, message: 'Servidor ativo!' });

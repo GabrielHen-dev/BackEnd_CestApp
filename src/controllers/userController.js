@@ -2,9 +2,9 @@ const userService = require('../services/userService');
 
 const createUser = async (req, res) => {
   try {
-    const { nome, email, endereco, telefone, cpf, cep, cidade, bairro, genero, provedorF, renda, qtPessoasC, programaGov, nomeGov } = req.body;
+    const { nome, email, endereco, telefone, cpf, cep, cidade, bairro, genero, provedor, renda, tamanhoFam, outrosProgramas, quaisProgramas, estadoUser, funcionario } = req.body;
 
-    if (!nome || !email || !telefone  || !endereco || !cpf ||  !cep ||  !cidade ||  !bairro || !genero ||  !provedorF || !renda || !qtPessoasC || !programaGov || !nomeGov) {
+    if (!nome || !email || !telefone  || !endereco || !cpf ||  !cep ||  !cidade ||  !bairro || !genero ||  !provedor || !renda || !tamanhoFam || !outrosProgramas || quaisProgramas|| !estadoUser || !funcionario) {
       return res.status(400).json({ message: 'Todos os campos são obrigatórios.' });
     }
 

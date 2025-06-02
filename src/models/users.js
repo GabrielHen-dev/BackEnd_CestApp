@@ -11,11 +11,13 @@ const userSchema = new mongoose.Schema({
   cidade: { type: String, required: true },
   bairro: { type: String, required: true },
   genero: { type: String, required: true },
-  provedorF: { type: String, required: true },
+  provedor: { type: String, required: true },
   renda: { type: String, required: true },
-  qtPessoasC: { type: String, required: true },
-  programaGov: { type: String, required: true },
-  nomeGov: { type: String, required: false }
+  tamanhoFam: { type: String, required: true },
+  outrosProgramas: { type: String, required: true },
+  quaisProgramas: { type: String},
+  estadoUser: { type: String, required: true },
+  funcionario: { type: String}
 
 }, {
   timestamps: true
